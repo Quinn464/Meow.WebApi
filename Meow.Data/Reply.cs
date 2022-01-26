@@ -7,15 +7,26 @@ using System.Threading.Tasks;
 
 namespace Meow.Data
 {
-    public class Reply
+    public class Reply //: Post
     {
         [Key]
         public int PawstReplyId { get; set; }
 
-        [Key]
+        [Required]
+        public string PawstReplyTitle { get; set; }
+
+        [Required]
         public string TextPawst { get; set; }
 
         [Required]
+        public string Catent { get; set; }
+
+        [Required]
         public Guid CatOwnerId { get; set; }
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
+        [Required]
+        public DateTimeOffset ModifiedUtc { get; set; }
+
     }
 }

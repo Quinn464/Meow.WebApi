@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="NoteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
