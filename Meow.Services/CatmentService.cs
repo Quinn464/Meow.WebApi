@@ -48,6 +48,7 @@ namespace Meow.Services
                         new CatmentListItem
                         {
                             CatmentId = e.CatmentId,
+                            ContentCatment = e.ContentCatment,
                             CreatedUtc = e.CreatedUtc
                         }
                      );

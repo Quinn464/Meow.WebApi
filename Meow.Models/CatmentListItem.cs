@@ -11,6 +11,8 @@ namespace Meow.Models
     {
         public int CatmentId { get; set; }
 
+        public string ContentCatment { get; set; }
+
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }
