@@ -36,7 +36,9 @@ namespace Meow.Data
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Note> Notes { get; set; }//
+
+        public DbSet<Catment> Catments { get; set; } 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -53,7 +55,8 @@ namespace Meow.Data
     {
         public IdentityUserLoginConfiguration()
         {
-            HasKey(IdentityUserLogin => IdentityUserLogin.UserId);
+            
+            HasKey(iul => iul.UserId);
         }
     }
     public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>

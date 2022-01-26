@@ -75,10 +75,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NoteCreate.cs" />
-    <Compile Include="NoteDetail.cs" />
-    <Compile Include="NoteEdit.cs" />
-    <Compile Include="NoteListItem.cs" />
+    <Compile Include="CatmentCreate.cs" />
+    <Compile Include="CatmentDetail.cs" />
+    <Compile Include="CatmentEdit.cs" />
+    <Compile Include="CatmentListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

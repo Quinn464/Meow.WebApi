@@ -7,19 +7,23 @@ using System.Threading.Tasks;
 
 namespace Meow.Data
 {
-    public class Note
+    public class Catment
     {
         [Key]
-        public int NoteId { get; set; }
+        public int CatmentId { get; set; }
+
         [Required]
-        public Guid OwnerId { get; set; }
+        public Guid AuthorId { get; set; }
+
         [Required]
-        public string Title { get; set; }
-        [Required]
-        public string Content { get; set; }
+        public string ContentCatment { get; set; }
+
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
-        public DateTimeOffset ModifiedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
+
+        //virtual list of Replies
+        //Foreign Key to Post via Id w/virtual Post)
     }
 }
