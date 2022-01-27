@@ -24,7 +24,8 @@ namespace Meow.Services
                     CatOwnerId = _userId,
                     PawstReplyTitle = model.PawstReplyTitle,
                     Catent = model.Catent,
-                    CreatedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTimeOffset.Now,
+                    CatmentId = model.CatmentId
                 };
 
             using (var ctx = new ApplicationDbContext())    

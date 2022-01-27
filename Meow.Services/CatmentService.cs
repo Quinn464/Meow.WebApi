@@ -24,7 +24,8 @@ namespace Meow.Services
                 {
                     AuthorId = _userId,
                     ContentCatment = model.ContentCatment,
-                    CreatedUtc = DateTimeOffset.Now
+                    CreatedUtc = DateTimeOffset.Now,
+                    PostId = model.PostId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -49,7 +50,7 @@ namespace Meow.Services
                         {
                             CatmentId = e.CatmentId,
                             ContentCatment = e.ContentCatment,
-                            CreatedUtc = e.CreatedUtc
+                            CreatedUtc = e.CreatedUtc,
                         }
                      );
 

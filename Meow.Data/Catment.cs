@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Meow.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,5 +27,16 @@ namespace Meow.Data
 
         //virtual list of Replies
         //Foreign Key to Post via Id w/virtual Post)
+
+        [ForeignKey(nameof(Post))]
+        public int PostId { get; set; }
+
+        public virtual Post Post { get; set; }
+
+        public virtual ReplyListItem ReplyListItem {get; set;}
+
+        
+
+
     }
 }
