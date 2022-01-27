@@ -12,5 +12,7 @@ namespace Meow.Models
         [Required]
         public string PawstReplyTitle { get; set; }
         public string Catent { get; set; }
+        public int CatmentId { get; set; }
+
     }
 }
