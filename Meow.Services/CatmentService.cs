@@ -8,96 +8,104 @@ using System.Threading.Tasks;
 
 namespace Meow.Services
 {
-    public class NoteService
+    public class CatmentService
     {
         private readonly Guid _userId;
-        public NoteService(Guid userId)
+
+        public CatmentService(Guid userId)
         {
             _userId = userId;
         }
-        public bool CreateNote(NoteCreate model)
+
+        public bool CreateCatment(CatmentCreate model)
         {
             var entity =
-                new Note()
+                new Catment()
                 {
-                    OwnerId = _userId,
-                    Title = model.Title,
-                    Content = model.Content,
+                    AuthorId = _userId,
+                    ContentCatment = model.ContentCatment,
                     CreatedUtc = DateTimeOffset.Now
                 };
+
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Notes.Add(entity);
+                ctx.Catments.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
+
         }
-        public IEnumerable<NoteListItem> GetNotes()
+
+        public IEnumerable<CatmentListItem> GetCatmentsGet()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Notes
-                    .Where(e => e.OwnerId == _userId)
+                    .Catments
+                    .Where(e => e.AuthorId == _userId)
                     .Select(
                         e =>
-                       new NoteListItem
-                       {
-                           NoteId = e.NoteId,
-                           Title = e.Title,
-                           CreatedUtc = e.CreatedUtc
-                       }
+                        new CatmentListItem
+                        {
+                            CatmentId = e.CatmentId,
+                            ContentCatment = e.ContentCatment,
+                            CreatedUtc = e.CreatedUtc
+                        }
                      );
+
                 return query.ToArray();
             }
         }
-        public NoteDetail GetNoteById(int id)
+
+        public CatmentDetail GetCatmentById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .Notes
-                    .Single(e => e.NoteId == id && e.OwnerId == _userId);
+                    .Catments
+                    .Single(e => e.CatmentId == id && e.AuthorId == _userId);
                 return
-                    new NoteDetail
+                    new CatmentDetail
                     {
-                        NoteId = entity.NoteId,
-                        Title = entity.Title,
-                        Content = entity.Content,
+                        CatmentId = entity.CatmentId,
+                        AuthorId = entity.AuthorId,
                         CreatedUtc = entity.CreatedUtc,
                         ModifiedUtc = entity.ModifiedUtc
                     };
             }
         }
-        public bool UpdateNote(NoteEdit model)
+
+        public bool UpdateCatment(CatmentEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .Notes
-                    .Single(e => e.NoteId == model.NoteId && e.OwnerId == _userId);
-                entity.Title = model.Title;
-                entity.Content = model.Content;
+                    .Catments
+                    .Single(e => e.CatmentId == model.CatmentId && e.AuthorId == _userId);
+
+                entity.ContentCatment = model.ContentCatment;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
-
             }
-
         }
-        public bool DeleteNote(int noteId)
+
+        public bool DeleteCatment(int catemntsId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .Notes
-                    .Single(e => e.NoteId == noteId && e.OwnerId == _userId);
-                ctx.Notes.Remove(entity);
+                    .Catments
+                    .Single(e => e.CatmentId == catemntsId && e.AuthorId == _userId);
+
+                ctx.Catments.Remove(entity);
+
                 return ctx.SaveChanges() == 1;
             }
+
         }
 
     }
