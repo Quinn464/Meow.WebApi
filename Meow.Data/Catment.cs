@@ -25,9 +25,6 @@ namespace Meow.Data
 
         public DateTimeOffset? ModifiedUtc { get; set; }
 
-        //virtual list of Replies
-        //Foreign Key to Post via Id w/virtual Post)
-
         [ForeignKey(nameof(Post))]
         public int PostId { get; set; }
 
