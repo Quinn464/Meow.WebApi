@@ -82,6 +82,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="CatmentService.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplyServices.cs" />
   </ItemGroup>

@@ -37,7 +37,11 @@ namespace Meow.Data
             return new ApplicationDbContext();
         }
 
+
         public DbSet<Reply> Replies { get; set; }
+
+        public DbSet<Catment> Catments { get; set; } 
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

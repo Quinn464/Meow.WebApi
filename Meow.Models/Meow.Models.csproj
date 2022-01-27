@@ -76,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="CatmentCreate.cs" />
+    <Compile Include="CatmentDetail.cs" />
+    <Compile Include="CatmentEdit.cs" />
+    <Compile Include="CatmentListItem.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplyCreate.cs" />
     <Compile Include="ReplyDetail.cs" />
