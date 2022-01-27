@@ -16,9 +16,6 @@ namespace Meow.Data
         public string PawstReplyTitle { get; set; }
 
         [Required]
-        public string TextPawst { get; set; }
-
-        [Required]
         public string Catent { get; set; }
 
         [Required]

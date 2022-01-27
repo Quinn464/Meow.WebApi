@@ -10,7 +10,7 @@ namespace Meow.Models
     public class ReplyCreate
     {
         [Required]
-        public string Title { get; set; }
-        public string Content { get; set; }
+        public string PawstReplyTitle { get; set; }
+        public string Catent { get; set; }
     }
 }

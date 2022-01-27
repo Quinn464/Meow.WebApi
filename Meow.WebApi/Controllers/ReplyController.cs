@@ -47,6 +47,33 @@ namespace Meow.WebApi.Controllers
             return Ok();
         }
 
+        public IHttpActionResult Put(ReplyEdit reply)
+        {
+
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+                var service = CreateReplyService();
+
+                if (!service.UpdateReply(reply))
+
+                    return InternalServerError();
+
+                return Ok();
+
+            }
+        }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateReplyService();
+            if (!service.DeleteReply(id))
+
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
+
 
     }
 }
