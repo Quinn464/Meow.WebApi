@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Meow.Models
 {
-    public class NoteCreate
+    public class PostCreate
     {
         [Required]
         [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]

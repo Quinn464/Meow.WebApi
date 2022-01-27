@@ -36,7 +36,18 @@ namespace Meow.Data
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Note> Notes { get; set; }//
+
+
+       
+        public DbSet<Post> Posts { get; set; }
+
+
+        public DbSet<Reply> Replies { get; set; }
+
+        public DbSet<Catment> Catments { get; set; } 
+
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -49,13 +60,15 @@ namespace Meow.Data
             .Add(new IdentityUserRoleConfiguration());
         }
     }
+
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
         public IdentityUserLoginConfiguration()
         {
-            HasKey(IdentityUserLogin => IdentityUserLogin.UserId);
+            HasKey(iul => iul.UserId);
         }
     }
+
     public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
     {
         public IdentityUserRoleConfiguration()
@@ -63,4 +76,5 @@ namespace Meow.Data
             HasKey(iur => iur.UserId);
         }
     }
+
 }

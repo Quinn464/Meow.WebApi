@@ -8,42 +8,42 @@ using System.Threading.Tasks;
 
 namespace Meow.Services
 {
-    public class NoteService
+    public class PostService
     {
         private readonly Guid _userId;
-        public NoteService(Guid userId)
+        public PostService(Guid userId)
         {
             _userId = userId;
         }
-        public bool CreateNote(NoteCreate model)
+        public bool CreatePost(PostCreate model)
         {
             var entity =
-                new Note()
+                new Post()
                 {
-                    OwnerId = _userId,
+                    AuthorId = _userId,
                     Title = model.Title,
                     Content = model.Content,
                     CreatedUtc = DateTimeOffset.Now
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Notes.Add(entity);
+                ctx.Posts.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<NoteListItem> GetNotes()
+        public IEnumerable<PostListItem> GetPost()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Notes
-                    .Where(e => e.OwnerId == _userId)
+                    .Posts
+                    .Where(e => e.AuthorId == _userId)
                     .Select(
                         e =>
-                       new NoteListItem
+                       new PostListItem
                        {
-                           NoteId = e.NoteId,
+                          PostId = e.PostId,
                            Title = e.Title,
                            CreatedUtc = e.CreatedUtc
                        }
@@ -51,18 +51,18 @@ namespace Meow.Services
                 return query.ToArray();
             }
         }
-        public NoteDetail GetNoteById(int id)
+        public PostDetail GetPostById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .Notes
-                    .Single(e => e.NoteId == id && e.OwnerId == _userId);
+                    .Posts
+                    .Single(e => e.PostId == id && e.AuthorId == _userId);
                 return
-                    new NoteDetail
+                    new PostDetail
                     {
-                        NoteId = entity.NoteId,
+                        PostId = entity.PostId,
                         Title = entity.Title,
                         Content = entity.Content,
                         CreatedUtc = entity.CreatedUtc,
@@ -70,14 +70,14 @@ namespace Meow.Services
                     };
             }
         }
-        public bool UpdateNote(NoteEdit model)
+        public bool UpdatePost(PostEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .Notes
-                    .Single(e => e.NoteId == model.NoteId && e.OwnerId == _userId);
+                    .Posts
+                    .Single(e => e.PostId == model.PostId && e.AuthorId == _userId);
                 entity.Title = model.Title;
                 entity.Content = model.Content;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
@@ -87,15 +87,15 @@ namespace Meow.Services
             }
 
         }
-        public bool DeleteNote(int noteId)
+        public bool DeletePost(int PostId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                    .Notes
-                    .Single(e => e.NoteId == noteId && e.OwnerId == _userId);
-                ctx.Notes.Remove(entity);
+                    .Posts
+                    .Single(e => e.PostId == PostId && e.AuthorId == _userId);
+                ctx.Posts.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

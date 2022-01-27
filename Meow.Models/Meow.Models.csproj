@@ -76,11 +76,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NoteCreate.cs" />
-    <Compile Include="NoteDetail.cs" />
-    <Compile Include="NoteEdit.cs" />
-    <Compile Include="NoteListItem.cs" />
+    <Compile Include="CatmentCreate.cs" />
+    <Compile Include="CatmentDetail.cs" />
+    <Compile Include="CatmentEdit.cs" />
+    <Compile Include="CatmentListItem.cs" />
+    <Compile Include="PostCreate.cs" />
+    <Compile Include="PostDetail.cs" />
+    <Compile Include="PostEdit.cs" />
+    <Compile Include="PostListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplyCreate.cs" />
+    <Compile Include="ReplyDetail.cs" />
+    <Compile Include="ReplyEdit.cs" />
+    <Compile Include="ReplyListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

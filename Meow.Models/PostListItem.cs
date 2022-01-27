@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace Meow.Models
 {
-    public class NoteListItem
+    public class PostListItem
     {
-        public int NoteId { get; set; }
+        public int PostId { get; set; }
         public string Title { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }
-
 }

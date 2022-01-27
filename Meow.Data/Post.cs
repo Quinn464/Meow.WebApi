@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Meow.Data
 {
-    public class Note
+    public class Post
     {
         [Key]
-        public int NoteId { get; set; }
+        public int PostId { get; set; }
         [Required]
-        public Guid OwnerId { get; set; }
+        public Guid AuthorId { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]

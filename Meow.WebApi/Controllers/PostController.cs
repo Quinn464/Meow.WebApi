@@ -2,32 +2,35 @@
 using Meow.Services;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Http;
 
 namespace Meow.WebApi.Controllers
 {
     [Authorize]
-    public class NoteController : ApiController
+    public class PostController : ApiController
     {
-        private NoteService CreateNoteService()
+        private PostService CreatePostService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var noteService = new NoteService(userId);
-            return noteService;
+            var postService = new PostService(userId);
+            return postService;
         }
         public IHttpActionResult Get()
         {
-            NoteService noteService = CreateNoteService();
-            var notes = noteService.GetNotes();
-            return Ok(notes);
+            PostService postService = CreatePostService();
+            var posts = postService.GetPost();
+            return Ok(posts);
 
         }
-        public IHttpActionResult Post(NoteCreate note)
+        public IHttpActionResult Post(PostCreate post)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var service = CreateNoteService();
-            if (!service.CreateNote(note))
+            var service = CreatePostService();
+            if (!service.CreatePost(post))
                 return InternalServerError();
             return Ok();
 
@@ -35,20 +38,20 @@ namespace Meow.WebApi.Controllers
         }
         public IHttpActionResult Get(int id)
         {
-            NoteService noteService = CreateNoteService();
-            var note = noteService.GetNoteById(id);
-            return Ok(note);
+            PostService postService = CreatePostService();
+            var post = postService.GetPostById(id);
+            return Ok(post);
 
         }
-        public IHttpActionResult Put(NoteEdit note)
+        public IHttpActionResult Put(PostEdit post)
         {
 
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
-                var service = CreateNoteService();
+                var service = CreatePostService();
 
-                if (!service.UpdateNote(note))
+                if (!service.UpdatePost(post))
 
                     return InternalServerError();
 
@@ -58,8 +61,8 @@ namespace Meow.WebApi.Controllers
         }
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateNoteService();
-            if (!service.DeleteNote(id))
+            var service = CreatePostService();
+            if (!service.DeletePost(id))
 
             {
                 return InternalServerError();
@@ -67,4 +70,5 @@ namespace Meow.WebApi.Controllers
             return Ok();
         }
     }
+
 }
