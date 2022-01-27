@@ -37,7 +37,8 @@ namespace Meow.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<Catment> Catments { get; set; } 
+        public DbSet<Catment> Catments { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -66,4 +67,5 @@ namespace Meow.Data
             HasKey(iur => iur.UserId);
         }
     }
+
 }
