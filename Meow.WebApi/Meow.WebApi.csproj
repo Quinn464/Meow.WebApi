@@ -208,6 +208,9 @@
     <Compile Include="Controllers\CatmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
 
+    <Compile Include="Controllers\PostController.cs" />
+
+
     <Compile Include="Controllers\ReplyController.cs" />
 
     <Compile Include="Controllers\ValuesController.cs" />

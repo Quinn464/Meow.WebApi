@@ -38,9 +38,14 @@ namespace Meow.Data
         }
 
 
+       
+        public DbSet<Post> Posts { get; set; }
+
+
         public DbSet<Reply> Replies { get; set; }
 
         public DbSet<Catment> Catments { get; set; } 
+
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -71,4 +76,5 @@ namespace Meow.Data
             HasKey(iur => iur.UserId);
         }
     }
+
 }
